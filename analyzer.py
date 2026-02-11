@@ -114,3 +114,62 @@ def generate_html(data):
     json_data = json.dumps(data, default=str, ensure_ascii=False)
     # ... [Insert the Template string from previous response here] ...
     # (Writing to HTML_OUTPUT)
+if not data:
+        with open(HTML_OUTPUT, "w") as f: f.write("<h1>No Data Yet</h1>")
+        return
+
+    df = pd.DataFrame(data)
+    df['published_at'] = pd.to_datetime(df['published_at'])
+    now = pd.Timestamp.now(tz='UTC')
+    
+    # نمایش ۱۰ مورد آخر در بخش اصلی
+    recent = df.sort_values('published_at', ascending=False).head(10).to_dict(orient='records')
+    
+    template_str = """
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <title>دیده‎‌بان روایت</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body { background: #f8f9fa; font-family: sans-serif; }
+            .analysis-box { border-right: 4px solid #007bff; background: #fff; margin-bottom: 20px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+            .intent { color: #d9534f; font-weight: bold; }
+            .counter { color: #5cb85c; font-weight: bold; }
+        </style>
+    </head>
+    <body>
+        <div class="container py-5">
+            <h1 class="text-center mb-5">🕵️ تحلیل هوشمند روایت‌های رسانه‌ای</h1>
+            {% for item in recent %}
+            <div class="analysis-box">
+                <h4><a href="{{ item.link }}" target="_blank" style="text-decoration:none;">{{ item.title }}</a></h4>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="intent">🎯 نیت پنهان:</p>
+                        <p>{{ item.analysis.hidden_intent or 'تحلیل ناموفق' }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="counter">💡 پاتک رسانه‌ای:</p>
+                        <p>{{ item.analysis.counter_narrative_strategy or 'تحلیل ناموفق' }}</p>
+                    </div>
+                </div>
+                <details>
+                    <summary class="text-muted small">مشاهده جزئیات فریم‌بندی</summary>
+                    <p class="mt-2"><strong>فریم روانی:</strong> {{ item.analysis.framing }}</p>
+                    <p><strong>اثر مورد انتظار:</strong> {{ item.analysis.expected_effect }}</p>
+                </details>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+    </html>
+    """
+    t = Template(template_str)
+    with open(HTML_OUTPUT, "w", encoding="utf-8") as f:
+        f.write(t.render(recent=recent))
+
+if __name__ == "__main__":
+    main()
