@@ -1,8 +1,8 @@
-name: Media Narrative Analyzer
+name: Global Narrative Analysis
 
 on:
   schedule:
-    - cron: '0 */8 * * *' 
+    - cron: '0 */8 * * *'
   workflow_dispatch:
 
 permissions:
@@ -11,46 +11,41 @@ permissions:
   id-token: write
 
 jobs:
-  analyze_and_publish:
+  build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4 # ارتقا به v4
-        
-      - name: Set up Python
-        uses: actions/setup-python@v5 # ارتقا به v5
+      - name: Checkout
+        uses: actions/checkout@v4 # آخرین نسخه
+
+      - name: Python Setup
+        uses: actions/setup-python@v5 # آخرین نسخه
         with:
           python-version: '3.10'
-          
-      - name: Install dependencies
+
+      - name: Install Libs
         run: |
-          pip install feedparser requests beautifulsoup4 python-dateutil jinja2 openai pandas
-          
-      - name: Run Analysis
+          pip install feedparser openai pandas jinja2 python-dateutil
+
+      - name: Run Engine
         env:
           LIARA_AI_API_KEY: ${{ secrets.LIARA_AI_API_KEY }}
         run: python analyzer.py
-        
-      - name: Commit and Push Data
+
+      - name: Save Data
         run: |
           git config --global user.name 'NarrativeBot'
-          git config --global user.email 'bot@noreply.github.com'
-          git add data/videos.json index.html || echo "No files to add"
-          git commit -m "Update narrative analysis [skip ci]" || echo "No changes"
+          git config --global user.email 'bot@github.com'
+          git add data/videos.json index.html
+          git commit -m "Auto-update analysis" || echo "No changes"
           git push
-          
-      - name: Upload artifact for Pages
-        uses: actions/upload-pages-artifact@v3 # ارتقا به v3 برای رفع خطا
-        with:
-          path: .
 
-  deploy:
-    needs: analyze_and_publish
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 # ارتقا به v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3 # رفع خطای نسخه 3 شما
+        with:
+          path: '.'
+
+      - name: Deploy to Pages
+        uses: actions/deploy-pages@v4
