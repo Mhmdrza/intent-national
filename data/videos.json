@@ -1,5 +1,31 @@
 [
   {
+    "video_id": "3QY_bTbiEXw",
+    "title": "برافراشته شدن پرچم شير و خورشيد به ياد جاویدنامان در برازجان",
+    "link": "https://www.youtube.com/shorts/3QY_bTbiEXw",
+    "published_at": "2026-02-11T22:53:33+00:00",
+    "analysis": {
+      "viewer_emotion": "غرور ملی، حس جسارت و همبستگی عاطفی با نمادهای تاریخی",
+      "viewer_expectation": "تداوم کنشگری میدانی و زنده نگه داشتن یاد جان‌باختگان برای مشروعیت‌زدایی از وضعیت موجود",
+      "psychological_impact": "شکستن سد ترس جمعی، تقویت هویت اپوزیسیونی و کاهش احساس درماندگی آموخته‌شده",
+      "urgency_score": 8
+    },
+    "fetched_at": "2026-02-11T23:15:15.165416"
+  },
+  {
+    "video_id": "RpEIHYI5Fwg",
+    "title": "برنامه با کامبیز حسینی؛ خانواده‌هایی که با هم به خیابان رفتند، اما برنگشتند",
+    "link": "https://www.youtube.com/watch?v=RpEIHYI5Fwg",
+    "published_at": "2026-02-11T22:43:33+00:00",
+    "analysis": {
+      "viewer_emotion": "غم و اندوه عمیق ناشی از تداعی سوگ جمعی، آمیخته با حس خشم و همدردی شدید",
+      "viewer_expectation": "روایتگری شفاف و احساسی از سرنوشت قربانیان، دادخواهی و زنده نگه داشتن نام جان‌باختگان",
+      "psychological_impact": "فعال‌سازی مجدد ترومای جمعی (Retraumatization)، تقویت حس هم‌سرنوشتی و تثبیت نفرت از عاملان سرکوب",
+      "urgency_score": 9
+    },
+    "fetched_at": "2026-02-11T23:15:31.475625"
+  },
+  {
     "video_id": "R8Y5UFsc8_0",
     "title": "سیاست با مراد ویسی: شمشیر ترامپ بر سر خامنه‌ای",
     "link": "https://www.youtube.com/watch?v=R8Y5UFsc8_0",
@@ -78,5 +104,83 @@
       "counter_narrative_strategy": "Highlight the historical failures and instability resulting from foreign interventions in the region (e.g., Libya, Afghanistan, Iraq). Frame the proponents of this view as 'dependent' on foreign powers rather than relying on the national will, appealing to Iranian nationalism and sovereignty. Question the legitimacy and representativeness of the 'political organizers' living abroad."
     },
     "fetched_at": "2026-02-11T22:52:48.780151"
+  },
+  {
+    "video_id": "YSzgbGh33kA",
+    "title": "۲۴ با فرداد فرحزاد: آینده جمهوری اسلامی در گفتگوی امروز ترامپ و نتانیاهو",
+    "link": "https://www.youtube.com/watch?v=YSzgbGh33kA",
+    "published_at": "2026-02-11T20:21:18+00:00",
+    "analysis": {
+      "viewer_emotion": "آمیزه‌ای از اضطراب و امید؛ هیجان ناشی از احتمال وقوع تغییرات بنیادین سیاسی",
+      "viewer_expectation": "شنیدن خبری قاطع یا طرحی عملیاتی درباره پایان یا تضعیف شدید جمهوری اسلامی",
+      "psychological_impact": "تشدید وضعیت «تعلیق روانی» و فرافکنی راه‌حل بحران‌های داخلی به مداخلات خارجی",
+      "urgency_score": 10
+    },
+    "fetched_at": "2026-02-11T23:15:47.220681"
+  },
+  {
+    "video_id": "d_nSsNcva9A",
+    "title": "احتمال توافق با ایران پایین است؛ نتانیاهو در کاخ سفید",
+    "link": "https://www.youtube.com/watch?v=d_nSsNcva9A",
+    "published_at": "2026-02-11T20:18:54+00:00",
+    "analysis": {
+      "viewer_emotion": "اضطراب، ناامیدی و بدبینی شدید نسبت به آینده اقتصادی و امنیتی",
+      "viewer_expectation": "جهش ناگهانی نرخ ارز، تشدید تحریم‌ها و احتمال وقوع درگیری نظامی",
+      "psychological_impact": "درماندگی آموخته‌شده و فرسایش روانی ناشی از زیست در وضعیت عدم قطعیت مزمن",
+      "urgency_score": 9
+    },
+    "fetched_at": "2026-02-11T23:16:02.757344"
+  },
+  {
+    "video_id": "JsTOjq6f3Mo",
+    "title": "افزایش قیمت و کمبود کالا؛ فشار معیشتی بر مردم ایران در سایه جنگ و سرکوب",
+    "link": "https://www.youtube.com/watch?v=JsTOjq6f3Mo",
+    "published_at": "2026-02-11T19:44:00+00:00",
+    "analysis": {
+      "viewer_emotion": "اضطراب وجودی، خشم سرکوب‌شده و احساس استیصال",
+      "viewer_expectation": "تشدید بی‌ثباتی و فقدان چشم‌انداز روشن برای بهبود اوضاع",
+      "psychological_impact": "فرسودگی شناختی، گسترش درماندگی آموخته‌شده و فعال‌شدن مکانیسم‌های بقا",
+      "urgency_score": 9
+    },
+    "fetched_at": "2026-02-11T23:16:19.214783"
+  },
+  {
+    "video_id": "vQg9qpDkmPw",
+    "title": "طرح نام پهلوی در سالگرد انقلاب اسلامی توسط حکومت",
+    "link": "https://www.youtube.com/watch?v=vQg9qpDkmPw",
+    "published_at": "2026-02-11T19:43:07+00:00",
+    "analysis": {
+      "viewer_emotion": "تعجب آمیخته با تمسخر و بدبینی نسبت به اقتدار روایی سیستم",
+      "viewer_expectation": "تلاش برای توجیه ناکارآمدی‌های فعلی با تخریب چهره‌های تاریخی (فرافکنی)",
+      "psychological_impact": "ایجاد ناهماهنگی شناختی و اثر بومرنگی (نتیجه عکس تبلیغ) که منجر به اعتباربخشی ناخواسته به گذشته می‌شود",
+      "urgency_score": 7
+    },
+    "fetched_at": "2026-02-11T23:16:38.364270"
+  },
+  {
+    "video_id": "HieEOlNyuu0",
+    "title": "چشم‌انداز: سناریوهای اصلی نتانیاهو در مذاکره با ترامپ درباره ایران",
+    "link": "https://www.youtube.com/watch?v=HieEOlNyuu0",
+    "published_at": "2026-02-11T19:40:07+00:00",
+    "analysis": {
+      "viewer_emotion": "اضطراب آمیخته با کنجکاوی و حس تعلیق",
+      "viewer_expectation": "دریافت تحلیل‌های پیش‌بینانه درباره احتمال وقوع جنگ، تحریم‌های بیشتر یا تغییر معادلات قدرت",
+      "psychological_impact": "تشدید احساس بی‌ثباتی وجودی و فعال‌سازی مکانیزم‌های دفاعی در برابر ترس از آینده",
+      "urgency_score": 9
+    },
+    "fetched_at": "2026-02-11T23:16:54.111535"
+  },
+  {
+    "video_id": "91DCVtYUI6M",
+    "title": "سناریوهای اصلی نتانیاهو در مذاکره با ترامپ درباره ایران",
+    "link": "https://www.youtube.com/shorts/91DCVtYUI6M",
+    "published_at": "2026-02-11T19:35:06+00:00",
+    "analysis": {
+      "viewer_emotion": "اضطراب ناشی از ابهام و نگرانی عمیق نسبت به ثبات امنیتی و نوسانات اقتصادی",
+      "viewer_expectation": "دریافت جزئیات دقیق درباره شدت تهدیدات (نظامی یا تحریمی) برای برنامه‌ریزی واکنشی در زندگی شخصی و مالی",
+      "psychological_impact": "تشدید فشار روانی جمعی (Collective Stress) و فعال‌سازی سوگیری شناختی «فاجعه‌انگاری» نسبت به آینده",
+      "urgency_score": 9
+    },
+    "fetched_at": "2026-02-11T23:17:10.712972"
   }
 ]
