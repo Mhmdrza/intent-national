@@ -36,6 +36,9 @@ jobs:
           git config --global user.email 'bot@github.com'
           git add data/videos.json
           git commit -m "RSS update" || echo "No changes"
+      
+          git pull --rebase origin main || echo "Nothing to rebase"
+      
           git push
 
 
@@ -68,6 +71,10 @@ jobs:
           git config --global user.email 'bot@github.com'
           git add data/videos.json index.html
           git commit -m "AI analysis update" || echo "No changes"
+      
+          # Pull latest changes and rebase
+          git pull --rebase origin main || echo "Nothing to rebase"
+      
           git push
 
       - name: Setup Pages
