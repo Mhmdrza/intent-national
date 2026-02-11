@@ -5,9 +5,14 @@
     "link": "https://www.youtube.com/shorts/Y4kRhef3Ky8",
     "published_at": "2026-02-11T23:26:52+00:00",
     "description": "",
-    "analysis": null,
+    "analysis": {
+      "viewer_emotion": "احساس همبستگی، خشم سرکوب‌شده و جستجوی تایید اجتماعی",
+      "viewer_expectation": "شنیدن تحلیل‌های جامعه‌شناختی درباره عمق شکاف حاکمیت و ملت و پیش‌بینی پیامدهای این تقابل",
+      "psychological_impact": "شکستن مارپیچ سکوت، کاهش انزوای ادراک‌شده و تقویت حس کارآمدی جمعی",
+      "urgency_score": 9
+    },
     "fetched_at": "2026-02-11T23:34:07.428658",
-    "analyzed_at": null
+    "analyzed_at": "2026-02-11T23:41:00.604155"
   },
   {
     "video_id": "YG57q8LpMi0",
@@ -15,9 +20,14 @@
     "link": "https://www.youtube.com/watch?v=YG57q8LpMi0",
     "published_at": "2026-02-11T23:19:26+00:00",
     "description": "",
-    "analysis": null,
+    "analysis": {
+      "viewer_emotion": "اندوه عمیق، حس همدردی سنگین و بیداری وجدان اجتماعی",
+      "viewer_expectation": "مواجهه با روایتی تلخ و شاعرانه از وضعیت حال حاضر جامعه و بازتاب رنج‌های کلان در زندگی روزمره مردم",
+      "psychological_impact": "شکستن مکانیزم دفاعی «بی‌تفاوتی اجتماعی»، تحریک حس یگانگی و بازشناسی ترومای جمعی در چهره‌های غریبه",
+      "urgency_score": 8
+    },
     "fetched_at": "2026-02-11T23:34:07.428769",
-    "analyzed_at": null
+    "analyzed_at": "2026-02-11T23:41:18.425811"
   },
   {
     "video_id": "pzFOih0yxH8",
@@ -25,9 +35,14 @@
     "link": "https://www.youtube.com/watch?v=pzFOih0yxH8",
     "published_at": "2026-02-11T23:18:14+00:00",
     "description": "",
-    "analysis": null,
+    "analysis": {
+      "viewer_emotion": "اندوه عمیق، اضطراب، خشم و همدلی شدید",
+      "viewer_expectation": "مواجهه با روایتی تراژیک، مستند و عاطفی درباره سرنوشت قربانیان یا مفقودین یک واقعه تلخ",
+      "psychological_impact": "تحریک ترومای جمعی، ایجاد احساس ناامنی وجودی، فعال‌سازی مکانیزم‌های دفاعی سوگواری و همزادپنداری با خانواده",
+      "urgency_score": 9
+    },
     "fetched_at": "2026-02-11T23:34:07.428864",
-    "analyzed_at": null
+    "analyzed_at": "2026-02-11T23:41:36.376035"
   },
   {
     "video_id": "kVSMCKIoxV0",
@@ -35,9 +50,14 @@
     "link": "https://www.youtube.com/watch?v=kVSMCKIoxV0",
     "published_at": "2026-02-11T23:17:53+00:00",
     "description": "",
-    "analysis": null,
+    "analysis": {
+      "viewer_emotion": "تلخ‌کامی، استیصال و خشم فروخورده ناشی از طنز سیاه",
+      "viewer_expectation": "همدردی جمعی، تایید واقعیت‌های تلخ اقتصادی و مطالبه‌گری برای تغییر رویکرد حاکمیت",
+      "psychological_impact": "تثبیت احساس محرومیت نسبی، تقویت بدبینی مزمن نسبت به تصمیم‌گیران و فرسایش امید اجتماعی",
+      "urgency_score": 9
+    },
     "fetched_at": "2026-02-11T23:34:07.428956",
-    "analyzed_at": null
+    "analyzed_at": "2026-02-11T23:41:50.535876"
   },
   {
     "video_id": "MKEZppH7cEg",
@@ -45,9 +65,14 @@
     "link": "https://www.youtube.com/watch?v=MKEZppH7cEg",
     "published_at": "2026-02-11T23:17:31+00:00",
     "description": "",
-    "analysis": null,
+    "analysis": {
+      "viewer_emotion": "بهت و شوک عمیق، ناباوری شناختی، وحشت ناشی از تضاد حاد بین زیست آرام گذشته و واقعیت خشن کنونی",
+      "viewer_expectation": "نیاز فوری به بازگشت امنیت و ثبات، درخواست توقف خشونت، جستجوی معنا برای وقایع غیرقابل‌هضم و نیاز به حمایت عاطفی",
+      "psychological_impact": "فروپاشی باورهای بنیادین (Shattered Assumptions regarding safety)، ترومای جمعی، اختلال استرس حاد و خطر بالای ابتلا به PTSD در افراد فاقد تاب‌آوری نسبت به خشونت",
+      "urgency_score": 9
+    },
     "fetched_at": "2026-02-11T23:34:07.429047",
-    "analyzed_at": null
+    "analyzed_at": "2026-02-11T23:42:05.021378"
   },
   {
     "video_id": "SYGT0rwzSR4",
@@ -55,9 +80,14 @@
     "link": "https://www.youtube.com/watch?v=SYGT0rwzSR4",
     "published_at": "2026-02-11T23:16:35+00:00",
     "description": "",
-    "analysis": null,
+    "analysis": {
+      "viewer_emotion": "کنجکاوی شدید، اضطراب وجودی و خشم بالقوه ناشی از واژه «قتل‌عام» و حس تهدید هویت ملی",
+      "viewer_expectation": "مواجهه با نظرات صریح، بدون سانسور و احتمالاً تکان‌دهنده از سوی شهروندان عادی برای سنجش میزان انسانیت یا قساوت طرف مقابل",
+      "psychological_impact": "فعال‌سازی شدید سوگیری‌های شناختی «ما در برابر آنها»، انسانی‌زدایی یا انسانی‌سازی مجدد دشمن، و تحریک هیجانات بقا",
+      "urgency_score": 9
+    },
     "fetched_at": "2026-02-11T23:34:07.429137",
-    "analyzed_at": null
+    "analyzed_at": "2026-02-11T23:42:20.991214"
   },
   {
     "video_id": "tLOUC5g1jH4",
@@ -65,9 +95,14 @@
     "link": "https://www.youtube.com/watch?v=tLOUC5g1jH4",
     "published_at": "2026-02-11T23:14:22+00:00",
     "description": "",
-    "analysis": null,
+    "analysis": {
+      "viewer_emotion": "تلفیقی از کنجکاوی شدید، همذات‌پنداری (در گروه هم‌فکر)، خشم یا تحقیر، و احساس تنش عاطفی",
+      "viewer_expectation": "شنیدن جزئیاتی از درگیری‌های لفظی، تضادهای ایدئولوژیک عمیق در خانه و نحوه تعامل فرد با اعضای خانواده وفادار به سیستم",
+      "psychological_impact": "تشدید خطای شناختی «ما در برابر آن‌ها» (Ingroup vs. Outgroup)، نرمال‌سازی گسست خانوادگی به دلیل سیاست، و ارضای حس تایید اجتماعی برای افرادی که تجربه مشابه دارند",
+      "urgency_score": 8
+    },
     "fetched_at": "2026-02-11T23:34:07.429250",
-    "analyzed_at": null
+    "analyzed_at": "2026-02-11T23:42:37.532942"
   },
   {
     "video_id": "3QY_bTbiEXw",
