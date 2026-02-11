@@ -7,98 +7,103 @@ from openai import OpenAI
 import pandas as pd
 from jinja2 import Template
 
-# --- تنظیمات سرویس اختصاصی تو ---
+# --- تنظیمات اختصاصی Liara AI ---
 BASE_URL = "https://ai.liara.ir/api/698d02e7fa009fae9b12b7dd/v1"
 MODEL_NAME = "google/gemini-3-pro-preview"
-# توصیه اکید: کلید را از Environment Variable بخوان
 API_KEY = os.environ.get("LIARA_AI_API_KEY") 
 
 RSS_URL = "https://www.youtube.com/feeds/videos.xml?channel_id=UCat6bC0Wrqq9Bcq7EkH_yQw"
 DATA_FILE = "data/videos.json"
 HTML_OUTPUT = "index.html"
 
-# پرامپت مهندسی معکوس روایت (Expert Persona)
 SYSTEM_PROMPT = """
-You are an expert media strategist and counter-propaganda analyst. 
-Analyze the Title and Description of the provided YouTube video metadata.
-Your goal is to deconstruct the narrative control attempt.
-
-Output a valid JSON object with these exact keys:
-1. "core_message": The overt message.
-2. "narrative_framing": The psychological/emotional frame (e.g. desperation, impending doom, manufactured hope).
-3. "hidden_intent": Why was this content produced now? What is the desired behavior/shift in public opinion?
-4. "counter_narrative": A sharp, strategic advice for an influencer to neutralize this specific narrative.
+You are a senior psychological operations (PSYOP) analyst. Analyze the following media metadata.
+Identify the hidden narrative control attempt.
+Provide a JSON response with:
+- "core_message": The surface story.
+- "framing": How they want the audience to feel.
+- "hidden_intent": The real strategic goal (reverse-engineered).
+- "counter_narrative": Strategic advice for a counter-media influencer to flip the narrative.
 """
 
 def get_ai_analysis(title, description):
-    if not API_KEY:
-        return {"error": "API Key is missing in environment variables."}
-    
-    # مقداردهی کلاینت با تنظیمات لیارا
+    if not API_KEY: return {"error": "Missing API Key"}
     client = OpenAI(base_url=BASE_URL, api_key=API_KEY)
-    
-    prompt = f"Title: {title}\nDescription: {description}"
-    
     try:
         completion = client.chat.completions.create(
             model=MODEL_NAME,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": prompt}
-            ],
-            response_format={"type": "json_object"} # جیمینای معمولاً از این فرمت پشتیبانی می‌کند
+                {"role": "user", "content": f"Title: {title}\nDesc: {description}"}
+            ]
         )
-        return json.loads(completion.choices[0].message.content)
-    except Exception as e:
-        print(f"AI Analysis Error: {e}")
-        return {"error": "Failed to analyze"}
+        # برخی مدل‌ها مستقیما JSON نمی‌دهند، تلاش برای پاکسازی:
+        content = completion.choices[0].message.content
+        return json.loads(content[content.find('{'):content.rfind('}')+1])
+    except:
+        return {"error": "Analysis failed"}
 
-def process_workflow():
-    # ۱. خواندن داده‌های قبلی
+def main():
+    # بارگذاری داده‌های قدیمی
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, 'r', encoding='utf-8') as f:
-            all_data = json.load(f)
+            db = json.load(f)
     else:
-        all_data = []
+        db = []
 
-    existing_ids = {item['video_id'] for item in all_data}
-    
-    # ۲. فچ کردن فید جدید
+    existing_ids = {item['video_id'] for item in db}
     feed = feedparser.parse(RSS_URL)
-    new_entries_count = 0
-
+    
+    new_items = []
     for entry in feed.entries:
         if entry.yt_videoid not in existing_ids:
-            print(f"Analyzing new video: {entry.title}")
-            
-            title = entry.title
+            print(f"Analyzing: {entry.title}")
             desc = entry.media_group[0]['media_description']
+            analysis = get_ai_analysis(entry.title, desc)
             
-            # تحلیل هوشمند
-            analysis = get_ai_analysis(title, desc)
-            
-            video_record = {
+            item = {
                 "video_id": entry.yt_videoid,
-                "title": title,
+                "title": entry.title,
                 "link": entry.link,
                 "published_at": parser.parse(entry.published).isoformat(),
                 "thumbnail": entry.media_group[0]['media_thumbnail'][0]['url'],
-                "analysis": analysis,
-                "fetched_at": datetime.datetime.now().isoformat()
+                "analysis": analysis
             }
-            all_data.insert(0, video_record) # جدیدترین‌ها در ابتدا
-            new_entries_count += 1
+            new_items.append(item)
 
-    # ۳. ذخیره‌سازی داده‌ها
+    # ادغام و ذخیره
+    updated_db = new_items + db
     os.makedirs("data", exist_ok=True)
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
-        json.dump(all_data, f, ensure_ascii=False, indent=2)
+        json.dump(updated_db, f, ensure_ascii=False, indent=2)
 
-    return all_data
-
-# --- در اینجا متد generate_html (که در پاسخ قبلی دادم) قرار می‌گیرد ---
-# (برای جلوگیری از طولانی شدن، فرض می‌کنیم همان منطق Jinja2 را اجرا می‌کند)
+    # تولید HTML (ساده شده)
+    df = pd.DataFrame(updated_db)
+    df['published_at'] = pd.to_datetime(df['published_at'])
+    recent = df.head(10).to_dict(orient='records')
+    
+    with open(HTML_OUTPUT, "w", encoding="utf-8") as f:
+        f.write(f"""
+        <html dir="rtl" lang="fa">
+        <head><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"></head>
+        <body class="bg-light">
+            <div class="container py-5">
+                <h1 class="text-center mb-5">دیده‎‌بان هوشمند روایت رسانه</h1>
+                {" ".join([f'''
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="text-primary">{i['title']}</h5>
+                            <div class="bg-dark text-white p-3 rounded">
+                                <b>نیت پنهان:</b> {i['analysis'].get('hidden_intent', 'N/A')}<br>
+                                <b class="text-warning">پاتک پیشنهادی:</b> {i['analysis'].get('counter_narrative', 'N/A')}
+                            </div>
+                        </div>
+                    </div>
+                ''' for i in recent])}
+            </div>
+        </body>
+        </html>
+        """)
 
 if __name__ == "__main__":
-    final_data = process_workflow()
-    # در اینجا تابع تولید HTML را فراخوانی کنید
+    main()
