@@ -2,7 +2,8 @@ name: Global Narrative Analysis
 
 on:
   schedule:
-    - cron: '0 */8 * * *'
+    - cron: '0 */8 * * *'   # 8-hour job
+    - cron: '0 2 * * *'     # daily AI job
   workflow_dispatch:
 
 permissions:
@@ -11,39 +12,69 @@ permissions:
   id-token: write
 
 jobs:
-  build_and_deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4 # آخرین نسخه
 
-      - name: Python Setup
-        uses: actions/setup-python@v5 # آخرین نسخه
+  rss_scrape:
+    if: github.event.schedule == '0 */8 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Install Libs
-        run: |
-          pip install feedparser openai pandas jinja2 python-dateutil
+      - name: Install Dependencies
+        run: pip install feedparser python-dateutil
 
-      - name: Run Engine
+      - name: Run Scraper
+        run: python rss_scraper.py
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name 'NarrativeBot'
+          git config --global user.email 'bot@github.com'
+          git add data/videos.json
+          git commit -m "RSS update" || echo "No changes"
+          git push
+
+
+  ai_analyze_and_deploy:
+    if: github.event.schedule == '0 2 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          pip install openai pandas jinja2
+
+      - name: Run AI Analyzer
         env:
           LIARA_AI_API_KEY: ${{ secrets.LIARA_AI_API_KEY }}
-        run: python analyzer.py
+        run: python ai_analyzer.py
 
-      - name: Save Data
+      - name: Generate UI
+        run: python generate_ui.py
+
+      - name: Commit & Push
         run: |
           git config --global user.name 'NarrativeBot'
           git config --global user.email 'bot@github.com'
           git add data/videos.json index.html
-          git commit -m "Auto-update analysis" || echo "No changes"
+          git commit -m "AI analysis update" || echo "No changes"
           git push
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3 # رفع خطای نسخه 3 شما
+        uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
