@@ -1,0 +1,7 @@
+feedparser
+requests
+beautifulsoup4
+python-dateutil
+jinja2
+openai
+pandas
