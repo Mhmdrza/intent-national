@@ -1,0 +1,60 @@
+name: Media Narrative Analyzer
+
+on:
+  schedule:
+    - cron: '0 */8 * * *'  # اجرا هر 8 ساعت
+  workflow_dispatch:      # امکان اجرای دستی
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  analyze_and_publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        
+    - name: Run Analysis Script
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: python analyzer.py
+      
+    - name: Commit and Push Data
+      run: |
+        git config --global user.name 'NarrativeBot'
+        git config --global user.email 'bot@noreply.github.com'
+        git add data/videos.json index.html
+        git commit -m "Update narrative analysis data [skip ci]" || echo "No changes to commit"
+        git push
+        
+    - name: Upload artifact for Pages
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: .
+
+  deploy:
+    needs: analyze_and_publish
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
