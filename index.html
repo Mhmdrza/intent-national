@@ -2,652 +2,643 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>تحلیل روان‌شناختی روایت‌ها</title>
-
-<style>
-body {
-    font-family: Vazirmatn, sans-serif;
-    background: #111;
-    color: #eaeaea;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 0 20px;
-}
-
-h1 {
-    font-size: 28px;
-    font-weight: 600;
-    border-bottom: 1px solid #333;
-    padding-bottom: 15px;
-    margin-bottom: 40px;
-}
-
-.card {
-    background: #1a1a1a;
-    padding: 25px;
-    margin-bottom: 30px;
-    border-radius: 6px;
-    border: 1px solid #222;
-}
-
-.card h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.meta {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 15px;
-}
-
-.section {
-    margin-bottom: 12px;
-}
-
-.label {
-    font-weight: 600;
-    color: #bbb;
-}
-
-.urgency {
-    font-weight: 600;
-    color: #ff4c4c;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رادار جنگ شناختی</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background: #0f172a; color: #f1f5f9; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { border-bottom: 2px solid #334155; padding-bottom: 15px; color: #38bdf8; }
+        
+        .card { 
+            background: #1e293b; border: 1px solid #334155; border-radius: 8px; 
+            padding: 20px; margin-bottom: 20px; transition: 0.2s;
+        }
+        .card:hover { border-color: #64748b; transform: translateY(-2px); }
+        
+        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .title { font-size: 1.2rem; font-weight: bold; color: #fff; text-decoration: none; flex: 1; }
+        .title:hover { color: #38bdf8; }
+        
+        .badge { padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; white-space: nowrap; margin-right: 10px;}
+        .high { background: #ef4444; color: white; }
+        .med { background: #f59e0b; color: black; }
+        .low { background: #10b981; color: white; }
+        .unknown { background: #64748b; color: white; }
+        
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #0f172a; padding: 15px; border-radius: 6px; }
+        .item { display: flex; flex-direction: column; }
+        .label { font-size: 0.75rem; color: #94a3b8; margin-bottom: 3px; }
+        .value { font-size: 0.95rem; }
+        
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
-
 <body>
-<div class="container">
-    <h1>تحلیل روان‌شناختی مخاطب رسانه</h1>
-
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/shorts/Y4kRhef3Ky8" target="_blank" style="color:#fff; text-decoration:none;">
-            اقلیت در برابر اکثریت جداشده از نظام
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T23:26:52+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            احساس همبستگی، خشم سرکوب‌شده و جستجوی تایید اجتماعی
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            شنیدن تحلیل‌های جامعه‌شناختی درباره عمق شکاف حاکمیت و ملت و پیش‌بینی پیامدهای این تقابل
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            شکستن مارپیچ سکوت، کاهش انزوای ادراک‌شده و تقویت حس کارآمدی جمعی
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 9/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=YG57q8LpMi0" target="_blank" style="color:#fff; text-decoration:none;">
-            وطن، پرنده‌ای در خون…آیا به چهره افراد در مترو نگاه می‌کنید؟
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T23:19:26+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            اندوه عمیق، حس همدردی سنگین و بیداری وجدان اجتماعی
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            مواجهه با روایتی تلخ و شاعرانه از وضعیت حال حاضر جامعه و بازتاب رنج‌های کلان در زندگی روزمره مردم
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            شکستن مکانیزم دفاعی «بی‌تفاوتی اجتماعی»، تحریک حس یگانگی و بازشناسی ترومای جمعی در چهره‌های غریبه
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 8/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=pzFOih0yxH8" target="_blank" style="color:#fff; text-decoration:none;">
-            خانواده‌هایی که با هم به خیابان رفتند، اما برنگشتند
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T23:18:14+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            اندوه عمیق، اضطراب، خشم و همدلی شدید
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            مواجهه با روایتی تراژیک، مستند و عاطفی درباره سرنوشت قربانیان یا مفقودین یک واقعه تلخ
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            تحریک ترومای جمعی، ایجاد احساس ناامنی وجودی، فعال‌سازی مکانیزم‌های دفاعی سوگواری و همزادپنداری با خانواده
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 9/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=kVSMCKIoxV0" target="_blank" style="color:#fff; text-decoration:none;">
-            جاوید از تهران: ما گفتیم سفره‌ها کوچک شده؛ تعداد افراد دور سفره را کم کردند
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T23:17:53+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            تلخ‌کامی، استیصال و خشم فروخورده ناشی از طنز سیاه
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            همدردی جمعی، تایید واقعیت‌های تلخ اقتصادی و مطالبه‌گری برای تغییر رویکرد حاکمیت
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            تثبیت احساس محرومیت نسبی، تقویت بدبینی مزمن نسبت به تصمیم‌گیران و فرسایش امید اجتماعی
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 9/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=MKEZppH7cEg" target="_blank" style="color:#fff; text-decoration:none;">
-            حامد از تهران: ما بهت‌زده‌ایم، چون در زندگی حتی یک دعوای ساده هم نکرده بودیم و این جنایات را دیدیم
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T23:17:31+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            بهت و شوک عمیق، ناباوری شناختی، وحشت ناشی از تضاد حاد بین زیست آرام گذشته و واقعیت خشن کنونی
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            نیاز فوری به بازگشت امنیت و ثبات، درخواست توقف خشونت، جستجوی معنا برای وقایع غیرقابل‌هضم و نیاز به حمایت عاطفی
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            فروپاشی باورهای بنیادین (Shattered Assumptions regarding safety)، ترومای جمعی، اختلال استرس حاد و خطر بالای ابتلا به PTSD در افراد فاقد تاب‌آوری نسبت به خشونت
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 9/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=SYGT0rwzSR4" target="_blank" style="color:#fff; text-decoration:none;">
-            مردم اسرائیل درباره قتل‌عام مردم ایران واقعاً چه فکر می‌کنند؟
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T23:16:35+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            کنجکاوی شدید، اضطراب وجودی و خشم بالقوه ناشی از واژه «قتل‌عام» و حس تهدید هویت ملی
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            مواجهه با نظرات صریح، بدون سانسور و احتمالاً تکان‌دهنده از سوی شهروندان عادی برای سنجش میزان انسانیت یا قساوت طرف مقابل
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            فعال‌سازی شدید سوگیری‌های شناختی «ما در برابر آنها»، انسانی‌زدایی یا انسانی‌سازی مجدد دشمن، و تحریک هیجانات بقا
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 9/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=tLOUC5g1jH4" target="_blank" style="color:#fff; text-decoration:none;">
-            رضا از تهران: خانواده من همه «ساندیس‌خور» هستند!
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T23:14:22+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            تلفیقی از کنجکاوی شدید، همذات‌پنداری (در گروه هم‌فکر)، خشم یا تحقیر، و احساس تنش عاطفی
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            شنیدن جزئیاتی از درگیری‌های لفظی، تضادهای ایدئولوژیک عمیق در خانه و نحوه تعامل فرد با اعضای خانواده وفادار به سیستم
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            تشدید خطای شناختی «ما در برابر آن‌ها» (Ingroup vs. Outgroup)، نرمال‌سازی گسست خانوادگی به دلیل سیاست، و ارضای حس تایید اجتماعی برای افرادی که تجربه مشابه دارند
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 8/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/shorts/3QY_bTbiEXw" target="_blank" style="color:#fff; text-decoration:none;">
-            برافراشته شدن پرچم شير و خورشيد به ياد جاویدنامان در برازجان
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T22:53:33+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            غرور ملی، حس جسارت و همبستگی عاطفی با نمادهای تاریخی
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            تداوم کنشگری میدانی و زنده نگه داشتن یاد جان‌باختگان برای مشروعیت‌زدایی از وضعیت موجود
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            شکستن سد ترس جمعی، تقویت هویت اپوزیسیونی و کاهش احساس درماندگی آموخته‌شده
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 8/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=RpEIHYI5Fwg" target="_blank" style="color:#fff; text-decoration:none;">
-            برنامه با کامبیز حسینی؛ خانواده‌هایی که با هم به خیابان رفتند، اما برنگشتند
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T22:43:33+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            غم و اندوه عمیق ناشی از تداعی سوگ جمعی، آمیخته با حس خشم و همدردی شدید
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            روایتگری شفاف و احساسی از سرنوشت قربانیان، دادخواهی و زنده نگه داشتن نام جان‌باختگان
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            فعال‌سازی مجدد ترومای جمعی (Retraumatization)، تقویت حس هم‌سرنوشتی و تثبیت نفرت از عاملان سرکوب
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 9/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=R8Y5UFsc8_0" target="_blank" style="color:#fff; text-decoration:none;">
-            سیاست با مراد ویسی: شمشیر ترامپ بر سر خامنه‌ای
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T22:19:13+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
+    <div class="container">
+        <h1>رادار تحلیل جنگ شناختی</h1>
+        
             
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
             
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
             
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: /10
-        </div>
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=YSzgbGh33kA" target="_blank" class="title">۲۴ با فرداد فرحزاد: آینده جمهوری اسلامی در گفتگوی امروز ترامپ و نتانیاهو</a>
+                    <span class="badge high">
+                        خطر: 10/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">آمیزه‌ای از اضطراب و امید؛ هیجان ناشی از احتمال وقوع تغییرات بنیادین سیاسی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">شنیدن خبری قاطع یا طرحی عملیاتی درباره پایان یا تضعیف شدید جمهوری اسلامی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/shorts/Y4kRhef3Ky8" target="_blank" class="title">اقلیت در برابر اکثریت جداشده از نظام</a>
+                    <span class="badge high">
+                        خطر: 9/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">احساس همبستگی، خشم سرکوب‌شده و جستجوی تایید اجتماعی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">شنیدن تحلیل‌های جامعه‌شناختی درباره عمق شکاف حاکمیت و ملت و پیش‌بینی پیامدهای این تقابل</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=pzFOih0yxH8" target="_blank" class="title">خانواده‌هایی که با هم به خیابان رفتند، اما برنگشتند</a>
+                    <span class="badge high">
+                        خطر: 9/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">اندوه عمیق، اضطراب، خشم و همدلی شدید</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">مواجهه با روایتی تراژیک، مستند و عاطفی درباره سرنوشت قربانیان یا مفقودین یک واقعه تلخ</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=kVSMCKIoxV0" target="_blank" class="title">جاوید از تهران: ما گفتیم سفره‌ها کوچک شده؛ تعداد افراد دور سفره را کم کردند</a>
+                    <span class="badge high">
+                        خطر: 9/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">تلخ‌کامی، استیصال و خشم فروخورده ناشی از طنز سیاه</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">همدردی جمعی، تایید واقعیت‌های تلخ اقتصادی و مطالبه‌گری برای تغییر رویکرد حاکمیت</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=MKEZppH7cEg" target="_blank" class="title">حامد از تهران: ما بهت‌زده‌ایم، چون در زندگی حتی یک دعوای ساده هم نکرده بودیم و این جنایات را دیدیم</a>
+                    <span class="badge high">
+                        خطر: 9/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">بهت و شوک عمیق، ناباوری شناختی، وحشت ناشی از تضاد حاد بین زیست آرام گذشته و واقعیت خشن کنونی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">نیاز فوری به بازگشت امنیت و ثبات، درخواست توقف خشونت، جستجوی معنا برای وقایع غیرقابل‌هضم و نیاز به حمایت عاطفی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=SYGT0rwzSR4" target="_blank" class="title">مردم اسرائیل درباره قتل‌عام مردم ایران واقعاً چه فکر می‌کنند؟</a>
+                    <span class="badge high">
+                        خطر: 9/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">کنجکاوی شدید، اضطراب وجودی و خشم بالقوه ناشی از واژه «قتل‌عام» و حس تهدید هویت ملی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">مواجهه با نظرات صریح، بدون سانسور و احتمالاً تکان‌دهنده از سوی شهروندان عادی برای سنجش میزان انسانیت یا قساوت طرف مقابل</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=RpEIHYI5Fwg" target="_blank" class="title">برنامه با کامبیز حسینی؛ خانواده‌هایی که با هم به خیابان رفتند، اما برنگشتند</a>
+                    <span class="badge high">
+                        خطر: 9/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">غم و اندوه عمیق ناشی از تداعی سوگ جمعی، آمیخته با حس خشم و همدردی شدید</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">روایتگری شفاف و احساسی از سرنوشت قربانیان، دادخواهی و زنده نگه داشتن نام جان‌باختگان</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=d_nSsNcva9A" target="_blank" class="title">احتمال توافق با ایران پایین است؛ نتانیاهو در کاخ سفید</a>
+                    <span class="badge high">
+                        خطر: 9/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">اضطراب، ناامیدی و بدبینی شدید نسبت به آینده اقتصادی و امنیتی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">جهش ناگهانی نرخ ارز، تشدید تحریم‌ها و احتمال وقوع درگیری نظامی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=JsTOjq6f3Mo" target="_blank" class="title">افزایش قیمت و کمبود کالا؛ فشار معیشتی بر مردم ایران در سایه جنگ و سرکوب</a>
+                    <span class="badge high">
+                        خطر: 9/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">اضطراب وجودی، خشم سرکوب‌شده و احساس استیصال</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">تشدید بی‌ثباتی و فقدان چشم‌انداز روشن برای بهبود اوضاع</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=HieEOlNyuu0" target="_blank" class="title">چشم‌انداز: سناریوهای اصلی نتانیاهو در مذاکره با ترامپ درباره ایران</a>
+                    <span class="badge high">
+                        خطر: 9/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">اضطراب آمیخته با کنجکاوی و حس تعلیق</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">دریافت تحلیل‌های پیش‌بینانه درباره احتمال وقوع جنگ، تحریم‌های بیشتر یا تغییر معادلات قدرت</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/shorts/91DCVtYUI6M" target="_blank" class="title">سناریوهای اصلی نتانیاهو در مذاکره با ترامپ درباره ایران</a>
+                    <span class="badge high">
+                        خطر: 9/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">اضطراب ناشی از ابهام و نگرانی عمیق نسبت به ثبات امنیتی و نوسانات اقتصادی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">دریافت جزئیات دقیق درباره شدت تهدیدات (نظامی یا تحریمی) برای برنامه‌ریزی واکنشی در زندگی شخصی و مالی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=YG57q8LpMi0" target="_blank" class="title">وطن، پرنده‌ای در خون…آیا به چهره افراد در مترو نگاه می‌کنید؟</a>
+                    <span class="badge high">
+                        خطر: 8/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">اندوه عمیق، حس همدردی سنگین و بیداری وجدان اجتماعی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">مواجهه با روایتی تلخ و شاعرانه از وضعیت حال حاضر جامعه و بازتاب رنج‌های کلان در زندگی روزمره مردم</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=tLOUC5g1jH4" target="_blank" class="title">رضا از تهران: خانواده من همه «ساندیس‌خور» هستند!</a>
+                    <span class="badge high">
+                        خطر: 8/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">تلفیقی از کنجکاوی شدید، همذات‌پنداری (در گروه هم‌فکر)، خشم یا تحقیر، و احساس تنش عاطفی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">شنیدن جزئیاتی از درگیری‌های لفظی، تضادهای ایدئولوژیک عمیق در خانه و نحوه تعامل فرد با اعضای خانواده وفادار به سیستم</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/shorts/3QY_bTbiEXw" target="_blank" class="title">برافراشته شدن پرچم شير و خورشيد به ياد جاویدنامان در برازجان</a>
+                    <span class="badge high">
+                        خطر: 8/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">غرور ملی، حس جسارت و همبستگی عاطفی با نمادهای تاریخی</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">تداوم کنشگری میدانی و زنده نگه داشتن یاد جان‌باختگان برای مشروعیت‌زدایی از وضعیت موجود</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=vQg9qpDkmPw" target="_blank" class="title">طرح نام پهلوی در سالگرد انقلاب اسلامی توسط حکومت</a>
+                    <span class="badge med">
+                        خطر: 7/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">تعجب آمیخته با تمسخر و بدبینی نسبت به اقتدار روایی سیستم</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">تلاش برای توجیه ناکارآمدی‌های فعلی با تخریب چهره‌های تاریخی (فرافکنی)</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=R8Y5UFsc8_0" target="_blank" class="title">سیاست با مراد ویسی: شمشیر ترامپ بر سر خامنه‌ای</a>
+                    <span class="badge unknown">
+                        خطر: 0/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/shorts/eS2yN_nufw0" target="_blank" class="title">شمخانی: توانمندی‌های موشکی ایران قابل مذاکره نیست</a>
+                    <span class="badge unknown">
+                        خطر: 0/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/shorts/8Xx-UutNYoY" target="_blank" class="title">ترامپ پس از دیدار با نتانیاهو: اصرار کردم مذاکرات با ایران ادامه یابد</a>
+                    <span class="badge unknown">
+                        خطر: 0/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/shorts/yXKYtM7xqN4" target="_blank" class="title">سناتور کندی به ایران‌اینترنشنال: ترامپ به زودی از مذاکره با تهران ناامید می‌شود</a>
+                    <span class="badge unknown">
+                        خطر: 0/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            
+            <div class="card">
+                <div class="header">
+                    <a href="https://www.youtube.com/watch?v=cS2EpFe6Sqk" target="_blank" class="title">مداخله بین‌المللی و سازماندهی سیاسی برای عبور از جمهوری اسلامی</a>
+                    <span class="badge unknown">
+                        خطر: 0/10
+                    </span>
+                </div>
+                <div class="grid">
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">N/A</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">N/A</span>
+                    </div>
+                </div>
+            </div>
+        
     </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/shorts/eS2yN_nufw0" target="_blank" style="color:#fff; text-decoration:none;">
-            شمخانی: توانمندی‌های موشکی ایران قابل مذاکره نیست
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T22:16:57+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: /10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/shorts/8Xx-UutNYoY" target="_blank" style="color:#fff; text-decoration:none;">
-            ترامپ پس از دیدار با نتانیاهو: اصرار کردم مذاکرات با ایران ادامه یابد
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T20:51:13+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: /10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/shorts/yXKYtM7xqN4" target="_blank" style="color:#fff; text-decoration:none;">
-            سناتور کندی به ایران‌اینترنشنال: ترامپ به زودی از مذاکره با تهران ناامید می‌شود
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T20:32:53+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: /10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=cS2EpFe6Sqk" target="_blank" style="color:#fff; text-decoration:none;">
-            مداخله بین‌المللی و سازماندهی سیاسی برای عبور از جمهوری اسلامی
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T20:29:42+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: /10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=YSzgbGh33kA" target="_blank" style="color:#fff; text-decoration:none;">
-            ۲۴ با فرداد فرحزاد: آینده جمهوری اسلامی در گفتگوی امروز ترامپ و نتانیاهو
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T20:21:18+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            آمیزه‌ای از اضطراب و امید؛ هیجان ناشی از احتمال وقوع تغییرات بنیادین سیاسی
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            شنیدن خبری قاطع یا طرحی عملیاتی درباره پایان یا تضعیف شدید جمهوری اسلامی
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            تشدید وضعیت «تعلیق روانی» و فرافکنی راه‌حل بحران‌های داخلی به مداخلات خارجی
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 10/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=d_nSsNcva9A" target="_blank" style="color:#fff; text-decoration:none;">
-            احتمال توافق با ایران پایین است؛ نتانیاهو در کاخ سفید
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T20:18:54+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            اضطراب، ناامیدی و بدبینی شدید نسبت به آینده اقتصادی و امنیتی
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            جهش ناگهانی نرخ ارز، تشدید تحریم‌ها و احتمال وقوع درگیری نظامی
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            درماندگی آموخته‌شده و فرسایش روانی ناشی از زیست در وضعیت عدم قطعیت مزمن
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 9/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=JsTOjq6f3Mo" target="_blank" style="color:#fff; text-decoration:none;">
-            افزایش قیمت و کمبود کالا؛ فشار معیشتی بر مردم ایران در سایه جنگ و سرکوب
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T19:44:00+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            اضطراب وجودی، خشم سرکوب‌شده و احساس استیصال
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            تشدید بی‌ثباتی و فقدان چشم‌انداز روشن برای بهبود اوضاع
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            فرسودگی شناختی، گسترش درماندگی آموخته‌شده و فعال‌شدن مکانیسم‌های بقا
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 9/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=vQg9qpDkmPw" target="_blank" style="color:#fff; text-decoration:none;">
-            طرح نام پهلوی در سالگرد انقلاب اسلامی توسط حکومت
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T19:43:07+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            تعجب آمیخته با تمسخر و بدبینی نسبت به اقتدار روایی سیستم
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            تلاش برای توجیه ناکارآمدی‌های فعلی با تخریب چهره‌های تاریخی (فرافکنی)
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            ایجاد ناهماهنگی شناختی و اثر بومرنگی (نتیجه عکس تبلیغ) که منجر به اعتباربخشی ناخواسته به گذشته می‌شود
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 7/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/watch?v=HieEOlNyuu0" target="_blank" style="color:#fff; text-decoration:none;">
-            چشم‌انداز: سناریوهای اصلی نتانیاهو در مذاکره با ترامپ درباره ایران
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T19:40:07+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            اضطراب آمیخته با کنجکاوی و حس تعلیق
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            دریافت تحلیل‌های پیش‌بینانه درباره احتمال وقوع جنگ، تحریم‌های بیشتر یا تغییر معادلات قدرت
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            تشدید احساس بی‌ثباتی وجودی و فعال‌سازی مکانیزم‌های دفاعی در برابر ترس از آینده
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 9/10
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2><a href="https://www.youtube.com/shorts/91DCVtYUI6M" target="_blank" style="color:#fff; text-decoration:none;">
-            سناریوهای اصلی نتانیاهو در مذاکره با ترامپ درباره ایران
-        </a></h2>
-
-        <div class="meta">
-            انتشار: 2026-02-11T19:35:06+00:00
-        </div>
-
-        <div class="section">
-            <span class="label">حس مخاطب:</span>
-            اضطراب ناشی از ابهام و نگرانی عمیق نسبت به ثبات امنیتی و نوسانات اقتصادی
-        </div>
-
-        <div class="section">
-            <span class="label">انتظار مخاطب:</span>
-            دریافت جزئیات دقیق درباره شدت تهدیدات (نظامی یا تحریمی) برای برنامه‌ریزی واکنشی در زندگی شخصی و مالی
-        </div>
-
-        <div class="section">
-            <span class="label">اثر روانی:</span>
-            تشدید فشار روانی جمعی (Collective Stress) و فعال‌سازی سوگیری شناختی «فاجعه‌انگاری» نسبت به آینده
-        </div>
-
-        <div class="section urgency">
-            شدت اثر: 9/10
-        </div>
-    </div>
-    
-</div>
 </body>
 </html>
