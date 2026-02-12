@@ -11,11 +11,23 @@ def main():
         return
 
     with open(DATA_FILE, "r", encoding="utf-8") as f:
-        data = json.load(f)
+        try:
+            data = json.load(f)
+        except json.JSONDecodeError:
+            print("Error: JSON file is corrupted.")
+            return
 
-    # Get analyzed videos and sort by urgency (highest first)
+    # Filter analyzed videos
     analyzed = [v for v in data if v.get("analysis")]
-    analyzed.sort(key=lambda x: int(x["analysis"].get("urgency_score", 0)), reverse=True)
+
+    # Sort safely: if urgency_score is missing or not an int, default to 0
+    def get_score(v):
+        try:
+            return int(v.get("analysis", {}).get("urgency_score", 0))
+        except (ValueError, TypeError):
+            return 0
+
+    analyzed.sort(key=get_score, reverse=True)
 
     template_str = """
 <!DOCTYPE html>
@@ -44,6 +56,7 @@ def main():
         .high { background: #ef4444; color: white; }
         .med { background: #f59e0b; color: black; }
         .low { background: #10b981; color: white; }
+        .unknown { background: #64748b; color: white; }
         
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #0f172a; padding: 15px; border-radius: 6px; }
         .item { display: flex; flex-direction: column; }
@@ -57,19 +70,33 @@ def main():
     <div class="container">
         <h1>رادار تحلیل جنگ شناختی</h1>
         {% for v in analyzed %}
-            {% set score = v.analysis.urgency_score | int %}
+            {# Safe access to urgency score using .get() #}
+            {% set score = v.analysis.get('urgency_score', 0) | int %}
+            
             <div class="card">
                 <div class="header">
                     <a href="{{ v.link }}" target="_blank" class="title">{{ v.title }}</a>
-                    <span class="badge {% if score >= 8 %}high{% elif score >= 5 %}med{% else %}low{% endif %}">
+                    <span class="badge {% if score >= 8 %}high{% elif score >= 5 %}med{% elif score > 0 %}low{% else %}unknown{% endif %}">
                         خطر: {{ score }}/10
                     </span>
                 </div>
                 <div class="grid">
-                    <div class="item"><span class="label">القای حسی</span><span class="value">{{ v.analysis.viewer_emotion }}</span></div>
-                    <div class="item"><span class="label">انتظار مخاطب</span><span class="value">{{ v.analysis.viewer_expectation }}</span></div>
-                    <div class="item"><span class="label">اثر روانی</span><span class="value">{{ v.analysis.psychological_impact }}</span></div>
-                    <div class="item"><span class="label">هدف رفتاری (Call to Action)</span><span class="value">{{ v.analysis.call_to_action }}</span></div>
+                    <div class="item">
+                        <span class="label">القای حسی</span>
+                        <span class="value">{{ v.analysis.get('viewer_emotion', 'N/A') }}</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">انتظار مخاطب</span>
+                        <span class="value">{{ v.analysis.get('viewer_expectation', 'N/A') }}</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">اثر روانی</span>
+                        <span class="value">{{ v.analysis.get('psychological_impact', 'N/A') }}</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">هدف رفتاری</span>
+                        <span class="value">{{ v.analysis.get('call_to_action', 'N/A') }}</span>
+                    </div>
                 </div>
             </div>
         {% endfor %}
@@ -78,9 +105,13 @@ def main():
 </html>
 """
     t = Template(template_str)
-    with open(HTML_OUTPUT, "w", encoding="utf-8") as f:
-        f.write(t.render(analyzed=analyzed))
-    print(f"UI generated at {HTML_OUTPUT}")
+    try:
+        html = t.render(analyzed=analyzed)
+        with open(HTML_OUTPUT, "w", encoding="utf-8") as f:
+            f.write(html)
+        print(f"UI successfully generated at {HTML_OUTPUT}")
+    except Exception as e:
+        print(f"Error rendering template: {e}")
 
 if __name__ == "__main__":
     main()
