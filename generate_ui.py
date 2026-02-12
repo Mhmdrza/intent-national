@@ -91,7 +91,7 @@ def main():
                     </div>
                     <div class="item">
                         <span class="label">اثر روانی</span>
-                        <span class="value">{{ v.analysis.get('psychological_impact', 'N/A') }}</span>
+                        <span class="value">{{ v.analysis.get('defensive_counter_narrative', 'N/A') }}</span>
                     </div>
                     <div class="item">
                         <span class="label">هدف رفتاری</span>
