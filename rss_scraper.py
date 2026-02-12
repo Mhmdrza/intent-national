@@ -38,8 +38,12 @@ def main():
             continue
 
         desc = ""
-        if hasattr(entry, "media_group"):
+
+        if hasattr(entry, "media_group") and entry.media_group:
             desc = entry.media_group[0].get("media_description", "")
+        
+        if not desc:
+            desc = getattr(entry, "summary", "")
 
         db[v_id] = {
             "video_id": v_id,
