@@ -90,7 +90,7 @@ def main():
                         <span class="value">{{ v.analysis.get('viewer_expectation', 'N/A') }}</span>
                     </div>
                     <div class="item">
-                        <span class="label">اثر روانی</span>
+                        <span class="label">روایت معکوس</span>
                         <span class="value">{{ v.analysis.get('defensive_counter_narrative', 'N/A') }}</span>
                     </div>
                     <div class="item">
