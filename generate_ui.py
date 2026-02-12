@@ -1,5 +1,6 @@
 import json
 import os
+from dateutil import parser
 from jinja2 import Template
 
 DATA_FILE = "data/videos.json"
