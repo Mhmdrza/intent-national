@@ -77,7 +77,7 @@ def main():
             
             <div class="card">
                 <div class="header">
-                    <a href="{{ v.link }}" target="_blank" class="title">عنوان خبر: {{ v.title }}</a>
+                    <a href="{{ v.link }}" target="_blank" class="title">عنوان خبر: "{{ v.title }}"</a>
                     <span class="badge {% if score >= 8 %}high{% elif score >= 5 %}med{% elif score > 0 %}low{% else %}unknown{% endif %}">
                         خطر: {{ score }}/10
                     </span>
