@@ -19,14 +19,13 @@ Output Format: A JSON object where keys are the SAME Video IDs, and values are o
 {
   "viewer_emotion": "The primary emotion being induced (e.g., Fear, Hope, Anger)",
   "viewer_expectation": "What the viewer is led to expect about the future",
-  "psychological_impact": "The intended psychological effect on the target audience",
+  "defensive_counter_narrative": "How to mitigate / neutrilze this coverage",
   "call_to_action": "What the content implicitly wants the user to do (mobilize, despair, fight, etc.)",
   "urgency_score": "Integer 1-10 indicating the intensity of the narrative attack"
 }
 
 Ensure the output is valid JSON. Do not include Markdown code blocks.
 """
-
 def load_data():
     if not os.path.exists(DATA_FILE):
         return []
@@ -37,16 +36,34 @@ def load_data():
             return []
 
 def save_data(data):
+    """Saves data to disk immediately."""
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
+def sanitize_result(result):
+    """Ensures the AI result strictly follows the schema to prevent UI crashes."""
+    defaults = {
+        "viewer_emotion": "Unknown",
+        "viewer_expectation": "Unknown",
+        "defensive_counter_narrative": "Analysis unavailable",
+        "call_to_action": "None",
+        "urgency_score": 0
+    }
+    
+    # Merge defaults with result
+    sanitized = {**defaults, **result}
+    
+    # Force urgency_score to be an integer
+    try:
+        sanitized["urgency_score"] = int(sanitized["urgency_score"])
+    except (ValueError, TypeError):
+        sanitized["urgency_score"] = 0
+        
+    return sanitized
+
 def batch_analyze(videos):
-    """
-    Sends a batch of videos to the AI model in a single request.
-    """
     client = OpenAI(base_url=BASE_URL, api_key=API_KEY, timeout=120.0)
 
-    # Prepare payload: { "vid1": {"title": "...", "desc": "..."}, "vid2": ... }
     payload = {
         v['video_id']: {"title": v['title'], "description": v['description']} 
         for v in videos
@@ -64,14 +81,12 @@ def batch_analyze(videos):
 
         content = completion.choices[0].message.content
         
-        # Robust parsing to handle potential markdown wrappers
-        start = content.find("{")
-        end = content.rfind("}") + 1
-        clean_json = content[start:end]
+        # Strip potential markdown wrapping
+        content = content.replace("```json", "").replace("```", "").strip()
         
-        return json.loads(clean_json)
+        return json.loads(content)
     except Exception as e:
-        print(f"Error during API call or parsing: {e}")
+        print(f"  [Error] Batch failed: {e}")
         return {}
 
 def main():
@@ -81,35 +96,46 @@ def main():
 
     data = load_data()
     
-    # Filter for videos that have NOT been analyzed yet
-    unanalyzed = [v for v in data if v.get("analysis") is None]
+    # Create a lookup map for faster access
+    video_map = {v["video_id"]: v for v in data}
+    
+    # Identify videos needing analysis
+    unanalyzed_ids = [v["video_id"] for v in data if v.get("analysis") is None]
 
-    if not unanalyzed:
+    if not unanalyzed_ids:
         print("All videos are already analyzed.")
         return
 
-    print(f"Found {len(unanalyzed)} videos to analyze.")
+    print(f"Found {len(unanalyzed_ids)} videos to analyze.")
 
-    # Process in batches of 15 to respect context windows and rate limits
-    BATCH_SIZE = 15
+    BATCH_SIZE = 5 # Reduced batch size slightly for better stability
     
-    for i in range(0, len(unanalyzed), BATCH_SIZE):
-        batch = unanalyzed[i:i + BATCH_SIZE]
-        print(f"Processing batch {i//BATCH_SIZE + 1} ({len(batch)} items)...")
+    for i in range(0, len(unanalyzed_ids), BATCH_SIZE):
+        batch_ids = unanalyzed_ids[i:i + BATCH_SIZE]
+        batch_videos = [video_map[vid] for vid in batch_ids]
         
-        results = batch_analyze(batch)
+        print(f"Processing batch {i//BATCH_SIZE + 1} ({len(batch_ids)} items)...")
         
-        for video in batch:
-            vid_id = video["video_id"]
-            if vid_id in results:
-                video["analysis"] = results[vid_id]
-                video["analyzed_at"] = datetime.datetime.utcnow().isoformat()
-                print(f"  [OK] Analyzed: {video['title'][:30]}...")
+        results = batch_analyze(batch_videos)
+        
+        for vid in batch_ids:
+            if vid in results:
+                # Sanitize ensures 'urgency_score' exists even if AI forgot it
+                clean_analysis = sanitize_result(results[vid])
+                video_map[vid]["analysis"] = clean_analysis
+                video_map[vid]["analyzed_at"] = datetime.datetime.utcnow().isoformat()
+                print(f"  [OK] {video_map[vid]['title'][:20]}... -> Score: {clean_analysis['urgency_score']}")
             else:
-                print(f"  [FAIL] No result for: {video['title'][:30]}")
+                print(f"  [WARN] No result for {vid}")
 
-    save_data(data)
-    print("Batch analysis complete.")
+        # === CRITICAL: Save after EVERY batch ===
+        print("  -> Saving progress...")
+        save_data(list(video_map.values()))
+        
+        # Small sleep to be kind to the API rate limit
+        time.sleep(1)
+
+    print("Analysis complete.")
 
 if __name__ == "__main__":
     main()
