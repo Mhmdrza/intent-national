@@ -5,59 +5,59 @@ import datetime
 from dateutil import parser
 
 RSS_URL = "https://www.youtube.com/feeds/videos.xml?channel_id=UCat6bC0Wrqq9Bcq7EkH_yQw"
-DATA_FILE = "data/videos.json"
+DATA_DIR = "data"
+DATA_FILE = os.path.join(DATA_DIR, "videos.json")
 
-
-def load_database():
-    if not os.path.exists("data"):
-        os.makedirs("data")
-
+def load_db():
+    if not os.path.exists(DATA_DIR):
+        os.makedirs(DATA_DIR)
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r", encoding="utf-8") as f:
-            return {v["video_id"]: v for v in json.load(f)}
+            try:
+                return {v["video_id"]: v for v in json.load(f)}
+            except: return {}
     return {}
 
-
-def save_database(db):
-    final = sorted(
-        db.values(),
-        key=lambda x: x["published_at"],
-        reverse=True
-    )
+def save_db(db):
+    data = sorted(db.values(), key=lambda x: x["published_at"], reverse=True)
     with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(final, f, ensure_ascii=False, indent=2)
-
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
 def main():
-    db = load_database()
+    db = load_db()
+    print(f"Fetching RSS...")
     feed = feedparser.parse(RSS_URL)
-
+    
+    new_items = 0
     for entry in feed.entries:
-        v_id = getattr(entry, "yt_videoid", None)
-        if not v_id or v_id in db:
-            continue
+        vid = getattr(entry, "yt_videoid", None)
+        if not vid or vid in db: continue
 
+        # Extract description
         desc = ""
-
         if hasattr(entry, "media_group") and entry.media_group:
-            desc = entry.media_group[0].get("media_description", "")
-        
-        if not desc:
-            desc = getattr(entry, "summary", "")
+             desc = entry.media_group[0].get("media_description", "")
+        if not desc: desc = getattr(entry, "summary", "")
 
-        db[v_id] = {
-            "video_id": v_id,
+        try: pub = parser.parse(entry.published).isoformat()
+        except: pub = datetime.datetime.utcnow().isoformat()
+
+        db[vid] = {
+            "video_id": vid,
             "title": entry.title,
             "link": entry.link,
-            "published_at": parser.parse(entry.published).isoformat(),
+            "published_at": pub,
             "description": desc,
             "analysis": None,
-            "fetched_at": datetime.datetime.utcnow().isoformat(),
-            "analyzed_at": None
+            "fetched_at": datetime.datetime.utcnow().isoformat()
         }
+        new_items += 1
 
-    save_database(db)
-
+    if new_items:
+        save_db(db)
+        print(f"Added {new_items} new videos.")
+    else:
+        print("No new videos.")
 
 if __name__ == "__main__":
     main()
