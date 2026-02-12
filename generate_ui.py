@@ -2,6 +2,8 @@ import json
 import os
 from dateutil import parser
 from jinja2 import Template
+import jdatetime
+from datetime import datetime
 
 DATA_FILE = "data/videos.json"
 HTML_OUTPUT = "index.html"
@@ -31,6 +33,11 @@ def main():
     
     analyzed.sort(key=get_published_date, reverse=True)
 
+    # Generate Persian Jalali timestamp
+    now = datetime.now()
+    jalali_now = jdatetime.datetime.fromgregorian(datetime=now)
+    last_updated = jalali_now.strftime('%Y/%m/%d - %H:%M')
+
     template_str = """
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -42,7 +49,8 @@ def main():
     <style>
         body { font-family: 'Vazirmatn', sans-serif; background: #0f172a; color: #f1f5f9; margin: 0; padding: 20px; }
         .container { max-width: 900px; margin: 0 auto; }
-        h1 { border-bottom: 2px solid #334155; padding-bottom: 15px; color: #38bdf8; }
+        h1 { border-bottom: 2px solid #334155; padding-bottom: 15px; color: #38bdf8; margin-bottom: 10px; }
+        .last-updated { color: #94a3b8; font-size: 0.9rem; margin-top: 0; margin-bottom: 30px; font-weight: normal; }
         
         .card { 
             background: #1e293b; border: 1px solid #334155; border-radius: 8px; 
@@ -71,6 +79,7 @@ def main():
 <body>
     <div class="container">
         <h1>رادار تحلیل جنگ شناختی</h1>
+        <p class="last-updated">آخرین بروزرسانی: {{ last_updated }}</p>
         {% for v in analyzed %}
             {# Safe access to urgency score using .get() #}
             {% set score = v.analysis.get('urgency_score', 0) | int %}
@@ -108,7 +117,7 @@ def main():
 """
     t = Template(template_str)
     try:
-        html = t.render(analyzed=analyzed)
+        html = t.render(analyzed=analyzed, last_updated=last_updated)
         with open(HTML_OUTPUT, "w", encoding="utf-8") as f:
             f.write(html)
         print(f"UI successfully generated at {HTML_OUTPUT}")
