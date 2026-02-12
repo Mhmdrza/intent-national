@@ -1,0 +1,43 @@
+name: Rss scraper
+
+on:
+  schedule:
+    - cron: '0 */8 * * *'   # 8-hour job
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+
+  rss_scrape:
+    if: github.event.schedule == '0 */8 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: pip install feedparser python-dateutil
+
+      - name: Run Scraper
+        run: python rss_scraper.py
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name 'NarrativeBot'
+          git config --global user.email 'bot@github.com'
+          git add data/videos.json
+          git commit -m "RSS update" || echo "No changes"
+      
+          git pull --rebase origin main || echo "Nothing to rebase"
+      
+          git push
