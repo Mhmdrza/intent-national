@@ -1,7 +1,7 @@
 name: UI builer
 on:
   schedule:
-    - cron: '0 3 * * *'     # daily AI job
+    - cron: '0 3 * * *'     # daily ui job
   workflow_dispatch:
 
 permissions:
