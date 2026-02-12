@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 jobs:
-  ai_analyze_and_deploy:
+  build_ui_and_deploy:
     if: github.event.schedule == '0 3 * * *' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
