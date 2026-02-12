@@ -20,14 +20,15 @@ def main():
     # Filter analyzed videos
     analyzed = [v for v in data if v.get("analysis")]
 
-    # Sort safely: if urgency_score is missing or not an int, default to 0
-    def get_score(v):
-        try:
-            return int(v.get("analysis", {}).get("urgency_score", 0))
-        except (ValueError, TypeError):
-            return 0
+    FALLBACK_DATE = parser.isoparse("1970-01-01T00:00:00+00:00")
 
-    analyzed.sort(key=get_score, reverse=True)
+    def get_published_date(v):
+        try:
+            return parser.isoparse(v.get("published_at"))
+        except (ValueError, TypeError):
+            return FALLBACK_DATE
+    
+    analyzed.sort(key=get_published_date, reverse=True)
 
     template_str = """
 <!DOCTYPE html>
@@ -90,12 +91,12 @@ def main():
                         <span class="value">{{ v.analysis.get('viewer_expectation', 'N/A') }}</span>
                     </div>
                     <div class="item">
-                        <span class="label">روایت معکوس</span>
-                        <span class="value">{{ v.analysis.get('defensive_counter_narrative', 'N/A') }}</span>
-                    </div>
-                    <div class="item">
                         <span class="label">هدف رفتاری</span>
                         <span class="value">{{ v.analysis.get('call_to_action', 'N/A') }}</span>
+                    </div>
+                    <div class="item">
+                        <span class="label">روایت معکوس</span>
+                        <span class="value">{{ v.analysis.get('defensive_counter_narrative', 'N/A') }}</span>
                     </div>
                 </div>
             </div>
