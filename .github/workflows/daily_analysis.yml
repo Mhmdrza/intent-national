@@ -31,28 +31,14 @@ jobs:
           LIARA_AI_API_KEY: ${{ secrets.LIARA_AI_API_KEY }}
         run: python ai_analyzer.py
 
-      - name: Generate UI
-        run: python generate_ui.py
-
       - name: Commit & Push
         run: |
           git config --global user.name 'NarrativeBot'
           git config --global user.email 'bot@github.com'
-          git add data/videos.json index.html
+          git add data/videos.json
           git commit -m "AI analysis update" || echo "No changes"
       
           # Pull latest changes and rebase
           git pull --rebase origin main || echo "Nothing to rebase"
       
           git push
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
-      - name: Deploy to Pages
-        uses: actions/deploy-pages@v4
