@@ -12,8 +12,8 @@ DATA_DIR = "data"
 # Format: (channel_id, output_filename_inside_DATA_DIR)
 # ----------------------------------------------------------------------
 CHANNELS = [
-    # ("UCat6bC0Wrqq9Bcq7EkH_yQw", "videos.json"),
-    # ("UCldfgbzNILYZA4dmDt4Cd6A", "secular_talk.json"),
+    ("UCat6bC0Wrqq9Bcq7EkH_yQw", "videos.json"),
+    ("UCldfgbzNILYZA4dmDt4Cd6A", "secular_talk.json"),
 ]
 
 # ----------------------------------------------------------------------
