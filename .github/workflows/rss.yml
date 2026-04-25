@@ -36,7 +36,7 @@ jobs:
           git config --global user.name 'NarrativeBot'
           git config --global user.email 'bot@github.com'
           git add data/videos.json
-          git add data/secular_talks.json
+          git add data/secular_talk.json
           git commit -m "RSS update" || echo "No changes"
       
           git pull --rebase origin main || echo "Nothing to rebase"
