@@ -1,4 +1,4 @@
-# Propaganda and Cognitive Warfare Analysis Tool
+# Cognitive Warfare Analysis Tool
 
 This repository contains the Propaganda and Cognitive Warfare Analysis Tool designed to analyze and evaluate various propaganda techniques and cognitive warfare strategies. 
 
